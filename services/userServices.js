@@ -27,7 +27,7 @@ const services = {
         };
         return true;
     },
-    checkExistEmail: async ({user}) => {
+    checkExistEmail: async ({ user }) => {
         const emaildb = await userModel.findOne({ email: user.email })
         if(emaildb) {
             return true;
