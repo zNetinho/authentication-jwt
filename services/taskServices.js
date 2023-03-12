@@ -14,6 +14,14 @@ const servicesTask = {
         if(!task.dataCriacao) {
             return false;
         }
+    },
+
+    checkIdEmpty: async (id) => {
+        const user = await userModel.findById(id);
+        if(!user) {
+            return false;
+        }
+        return true;
     }
 
 }

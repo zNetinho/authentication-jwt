@@ -8,13 +8,14 @@ const bcrypt = require('bcrypt')
 
 const userController = {
     create: async (req, res) => {
-
         try {
+            debugger
             const user = {
                 nome: req.body.nome,
                 email: req.body.email,
                 password: req.body.password,
-                confirm_password: req.body.confirm_password
+                confirm_password: req.body.confirm_password,
+                tasks: []
             }
 
             if (!user.nome) {
@@ -43,6 +44,7 @@ const userController = {
                 user.password = passwordHash
                 user.confirm_password = passwordHash
                 await UserModel.create(user);
+                console.log(user)
                 return res.status(201).json({ msg: `Usuario registrado` })
             }
 
@@ -101,6 +103,10 @@ const userController = {
             return res.status(404).json({ message: 'Usuario não encontrado' });
         }
         return res.status(200).json({ message: user })
+    },
+
+    editUser: async (req, res) => {
+        
     }
 };
 

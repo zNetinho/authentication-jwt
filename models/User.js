@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
-// const { Schema } = mongoose;
+const { task } = require("./taskModel.js")
 
-const UserModel = new mongoose.Schema({
+const { Schema } = mongoose;
+
+const userModel = new Schema({
     nome: {
         type: String,
         required: true
@@ -17,9 +19,10 @@ const UserModel = new mongoose.Schema({
     confirm_password: {
         type: String,
         required: true
+    },
+    tasks: {
+        type: [task]
     }
 })
 
-
-
-module.exports = mongoose.model("User", UserModel)
+module.exports = mongoose.model("User", userModel)
